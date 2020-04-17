@@ -10,6 +10,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  EMPTY_FIELDS,
 } from "./types";
 
 //Check token & load user
@@ -75,7 +76,6 @@ export const register = ({ username, email, password }) => (dispatch) => {
 
   //Request body from username and password
   const body = JSON.stringify({ username, email, password });
-
   axios
     .post("/api/auth/register", body, config)
     .then((res) => {

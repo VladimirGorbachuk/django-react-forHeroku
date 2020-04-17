@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 export class Login extends Component {
   state = {
@@ -16,8 +17,16 @@ export class Login extends Component {
   };
 
   onSubmit = (e) => {
+    console.log("onsubmit of Login has been called");
     e.preventDefault();
-    this.props.login(this.state.username, this.state.password);
+    const { username, password } = this.state;
+    if (username === "" || password === "") {
+      this.props.createMessage({
+        emptyFields: "Please do not leave empty fields",
+      });
+    } else {
+      this.props.login(username, password);
+    }
   };
 
   onChange = (e) =>
@@ -76,4 +85,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, createMessage })(Login);

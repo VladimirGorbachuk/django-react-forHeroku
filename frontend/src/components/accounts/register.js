@@ -24,6 +24,10 @@ export class Register extends Component {
     //alert is not showing
     if (password !== password2) {
       this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
+    } else if (!username || !email || !password) {
+      this.props.createMessage({
+        emptyFields: "Please do not leave empty fields",
+      });
     } else {
       const newUser = {
         username,

@@ -41,6 +41,10 @@ export class Alerts extends Component {
         console.log("here should be alert");
         alert.error(message.passwordNotMatch);
       }
+      if (message.emptyFields) {
+        console.log("here should be alert about empty fields");
+        alert.error(message.emptyFields);
+      }
     }
   }
 
