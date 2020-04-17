@@ -1,0 +1,10 @@
+after registering, logging in to heroku from bash you need to
+git init
+git add --all
+git commit
+
+heroku create
+git push heroku master
+heroku bash
+python3 manage.py collectstatic
+python3 manage.py migrate
