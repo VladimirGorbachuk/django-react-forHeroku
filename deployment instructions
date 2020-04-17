@@ -6,5 +6,6 @@ git commit
 heroku create
 git push heroku master
 heroku run bash
-python3 manage.py collectstatic
+python3 manage.py collectstatic #in my case it ran automatically on heroku
+python3 manage.py makemigrations #not sure if it runs automatically
 python3 manage.py migrate
